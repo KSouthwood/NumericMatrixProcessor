@@ -47,4 +47,14 @@ public class Matrix {
             System.out.println();
         }
     }
+
+    public Matrix multiply(int factor) {
+        Matrix product = new Matrix(rows, cols);
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                product.matrix[row][col] = this.matrix[row][col] * factor;
+            }
+        }
+        return product;
+    }
 }
