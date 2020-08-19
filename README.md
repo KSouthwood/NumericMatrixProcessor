@@ -15,4 +15,6 @@ Modify the program to multiply a matrix by a specified constant. The first line 
 number of rows `n` and columns `m` of the matrix, followed by `n` rows of `m` numbers, followed on the last line by the
 constant. Output the result of the multiplication to standard out.
 
- 
+##### Stage 3: Matrix by matrix multiplication
+Implement the ability to multiply one matrix by another matrix. Also, implement a menu system to choose which matrix
+operation to be performed. Lastly, modify the program to be able to handle floating-point numbers.
