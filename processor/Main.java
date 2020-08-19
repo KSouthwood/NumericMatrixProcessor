@@ -15,6 +15,7 @@ public class Main {
             System.out.println("1. Add matrices");
             System.out.println("2. Multiply matrix to a constant");
             System.out.println("3. Multiply matrices");
+            System.out.println("4. Transpose matrix");
             System.out.println("0. Exit");
             System.out.print("Your choice: ");
             choice = input.nextInt();
@@ -29,6 +30,9 @@ public class Main {
                 case 3:
                     multiplyMatrixByMatrix(input);
                     break;
+                case 4:
+                    transposeMenu(input);
+                    break;
                 case 0:
                     return;
                 default:
@@ -36,6 +40,25 @@ public class Main {
                     break;
             }
         } while(true);
+    }
+
+    private static void transposeMenu(Scanner input) {
+        int choice;
+
+        do {
+            System.out.println();
+            System.out.println("1. Main diagonal");
+            System.out.println("2. Side diagonal");
+            System.out.println("3. Vertical line");
+            System.out.println("4. Horizontal line");
+            System.out.print("Your choice: ");
+            choice = input.nextInt();
+            if (String.valueOf(choice).matches("[^1234]")) {
+                System.out.println("Invalid choice!");
+            }
+        } while (choice < 1 || choice > 4);
+
+        transposeMatrix(input, choice);
     }
 
     private static Matrix getMatrix(Scanner input, String number) {
@@ -75,5 +98,11 @@ public class Main {
         } else {
             System.out.println("ERROR: First matrix rows must equal second matrix columns!");
         }
+    }
+
+    private static void transposeMatrix(Scanner input, int mode) {
+        Matrix matrix = getMatrix(input, "the");
+        System.out.println("The result is:");
+        matrix.transpose(mode).print();
     }
 }

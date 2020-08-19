@@ -18,3 +18,9 @@ constant. Output the result of the multiplication to standard out.
 ##### Stage 3: Matrix by matrix multiplication
 Implement the ability to multiply one matrix by another matrix. Also, implement a menu system to choose which matrix
 operation to be performed. Lastly, modify the program to be able to handle floating-point numbers.
+
+##### Stage 4: Transpose
+For this stage, time to code in matrix transposition. (Matrix transposition is an operation in linear algebra that
+exchanges matrix rows on matrix columns and returns a new matrix as a result.) Although in math, the only transposition
+is over the main diagonal (upper left to lower right), we'll code transpositions over both diagonals as well as
+horizontally and vertically to flex our array skills.

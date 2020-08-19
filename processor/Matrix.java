@@ -69,4 +69,39 @@ public class Matrix {
         }
         return product;
     }
+
+    public Matrix transpose(int mode) {
+        Matrix result = new Matrix(this.cols, this.rows);
+        switch (mode) {
+            case 1: // main diagonal transposition
+                for (int row = 0; row < this.rows; row++) {
+                    for (int col = 0; col < this.cols; col++) {
+                        result.matrix[col][row] = this.matrix[row][col];
+                    }
+                }
+                break;
+            case 2: // side diagonal transposition
+                for (int row = 0; row < this.rows; row++) {
+                    for (int col = 0; col < this.cols; col++) {
+                        result.matrix[this.cols - col - 1][this.rows - row - 1] = this.matrix[row][col];
+                    }
+                }
+                break;
+            case 3: // vertical transposition
+                for (int row = 0; row < this.rows; row++) {
+                    for (int col = 0; col < this.cols; col++) {
+                        result.matrix[row][this.cols - col - 1] = this.matrix[row][col];
+                    }
+                }
+                break;
+            case 4: // horizontal transposition
+                for (int row = 0; row < this.rows; row++) {
+                    for (int col = 0; col < this.cols; col++) {
+                        result.matrix[this.rows - row - 1][col] = this.matrix[row][col];
+                    }
+                }
+                break;
+        }
+        return result;
+    }
 }
