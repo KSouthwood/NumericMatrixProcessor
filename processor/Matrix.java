@@ -104,4 +104,42 @@ public class Matrix {
         }
         return result;
     }
+
+    public double getDeterminant() {
+        return calculateDeterminant(this.matrix);
+    }
+
+    private double calculateDeterminant(double[][] matrixA) {
+        if (matrixA.length == 2) {
+            return (matrixA[0][0] * matrixA[1][1]) - (matrixA[0][1] * matrixA[1][0]);
+        }
+
+        double sum = 0.0;
+
+        for (int col = 0; col < matrixA.length; col++) {
+            sum += matrixA[0][col] * Math.pow(-1.0, 1 + col + 1) * calculateDeterminant(getSubMatrix(matrixA, 0, col));
+        }
+
+        return sum;
+    }
+
+    private double[][] getSubMatrix(double[][] matrix, int skipRow, int skipCol) {
+        double[][] subMatrix = new double[matrix.length - 1][matrix.length - 1];
+
+        for (int row = 0, subRow = 0; row < matrix.length; row++) {
+            if (row == skipRow) {
+                continue;
+            }
+            for (int col = 0, subCol = 0; col < matrix[row].length; col++) {
+                if (col == skipCol) {
+                    continue;
+                }
+                subMatrix[subRow][subCol] = matrix[row][col];
+                subCol++;
+            }
+            subRow++;
+        }
+
+        return subMatrix;
+    }
 }

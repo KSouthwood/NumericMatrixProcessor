@@ -24,3 +24,7 @@ For this stage, time to code in matrix transposition. (Matrix transposition is a
 exchanges matrix rows on matrix columns and returns a new matrix as a result.) Although in math, the only transposition
 is over the main diagonal (upper left to lower right), we'll code transpositions over both diagonals as well as
 horizontally and vertically to flex our array skills.
+
+##### Stage 5: Determined!
+Implement methods to calculate the determinant of a matrix. A determinant is a single number that can be computed from
+elements of a square matrix.
