@@ -42,13 +42,14 @@ public class Matrix {
     public void print() {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                System.out.print(this.matrix[row][col] + " ");
+                System.out.printf("%6.2f ", this.matrix[row][col]);
             }
             System.out.println();
         }
+        System.out.println();
     }
 
-    public Matrix multiply(int factor) {
+    public Matrix multiply(double factor) {
         Matrix product = new Matrix(rows, cols);
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
@@ -96,9 +97,8 @@ public class Matrix {
                 break;
             case 4: // horizontal transposition
                 for (int row = 0; row < this.rows; row++) {
-                    for (int col = 0; col < this.cols; col++) {
-                        result.matrix[this.rows - row - 1][col] = this.matrix[row][col];
-                    }
+                    if (this.cols >= 0)
+                        System.arraycopy(this.matrix[row], 0, result.matrix[this.rows - row - 1], 0, this.cols);
                 }
                 break;
         }
@@ -141,5 +141,19 @@ public class Matrix {
         }
 
         return subMatrix;
+    }
+
+    public Matrix findMatrixInverse(double determinant) {
+        return getCofactors().multiply(1.0 / determinant);
+    }
+
+    private Matrix getCofactors() {
+        Matrix cofactorMatrix = new Matrix(this.rows, this.cols);
+        for (int row = 0; row < this.rows; row++) {
+            for (int col = 0; col < this.cols; col++) {
+                cofactorMatrix.matrix[row][col] = Math.pow(-1.0, (row + 1) + (col + 1)) * calculateDeterminant(getSubMatrix(this.matrix, row, col));
+            }
+        }
+        return cofactorMatrix.transpose(1);
     }
 }

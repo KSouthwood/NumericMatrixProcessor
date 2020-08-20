@@ -28,3 +28,8 @@ horizontally and vertically to flex our array skills.
 ##### Stage 5: Determined!
 Implement methods to calculate the determinant of a matrix. A determinant is a single number that can be computed from
 elements of a square matrix.
+
+##### Stage 6: Inverse matrix
+Find the inverse of a matrix. This will take a combination of the previous stages to complete.
+
+The inverse of a matrix is a matrix that when multiplied with the original matrix yields an identity matrix.

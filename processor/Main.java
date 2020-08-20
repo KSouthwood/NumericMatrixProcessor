@@ -17,6 +17,7 @@ public class Main {
             System.out.println("3. Multiply matrices");
             System.out.println("4. Transpose matrix");
             System.out.println("5. Calculate a determinant");
+            System.out.println("6. Inverse matrix");
             System.out.println("0. Exit");
             System.out.print("Your choice: ");
             choice = input.nextInt();
@@ -36,6 +37,9 @@ public class Main {
                     break;
                 case 5:
                     findMatrixDeterminant(input);
+                    break;
+                case 6:
+                    findMatrixInverse(input);
                     break;
                 case 0:
                     return;
@@ -88,7 +92,7 @@ public class Main {
     private static void multiplyMatrixByConstant(Scanner input) {
         Matrix matrixA = getMatrix(input, "the");
         System.out.print("Enter the constant: ");
-        Matrix result = matrixA.multiply(input.nextInt());
+        Matrix result = matrixA.multiply(input.nextDouble());
         System.out.println("The multiplication result is:");
         result.print();
     }
@@ -118,5 +122,16 @@ public class Main {
         } else {
             System.out.println("Can't get determinant of non-square matrix");
         }
+    }
+
+    private static void findMatrixInverse(Scanner input) {
+        Matrix matrix = getMatrix(input, "the");
+        double determinant = matrix.getDeterminant();
+        if (determinant == 0.0) {
+            System.out.println("Determinant of matrix is 0. Can't find inverse!");
+            return;
+        }
+        System.out.println("The result is:");
+        matrix.findMatrixInverse(determinant).print();
     }
 }
